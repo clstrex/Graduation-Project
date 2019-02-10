@@ -1,0 +1,9 @@
+<h1>Hello, <%= @contact.name %>! </h1>
+
+<a href="/contacts/<%= @contact.id %>/phone_number"> Add a new phone number! </a>
+
+<ul>
+  <% @contact.phone_numbers.each do |phone_number| %>
+    <li> <a href="/contacts/<%= @contact.id %>"> <%= phone_number.number %> </a> </li>
+  <% end %>
+</ul>

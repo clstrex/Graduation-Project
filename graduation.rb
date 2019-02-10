@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/activerecord"
 require "./app/models/contact"
+require "./app/models/phonenumber"
 
 set :database, "sqlite3:development.sqlite3"
 
@@ -21,8 +22,7 @@ post '/contacts' do
   @contact = Contact.new(name: params[:name])
   if @contact.valid?
      @contact.save
-  else
-    puts "wrong"
+     ####ELSE AGREGAR MENSAJE DE ERROR
   end
   redirect '/contacts'
 end
@@ -48,6 +48,23 @@ delete '/contacts/:id' do
   @contact.destroy
   redirect '/contacts'
 end
+
+get '/contacts/:id' do
+  @contact = Contact.find(params[:id])
+  erb :user_page
+end
+
+get '/contacts/:id/phone_number' do
+  @contact = Contact.find(params[:id])
+  erb :phonenumber_new
+end
+
+post '/contacts/:id' do
+  @contact = Contact.find(params[:id])
+  @phone_number = @contact.phone_numbers.create(number: params[:phone_number])
+  erb :user_page
+end
+
 
 
 
