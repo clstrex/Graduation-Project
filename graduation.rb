@@ -54,7 +54,7 @@ get '/contacts/:id' do
   erb :user_page
 end
 
-get '/contacts/:id/phone_number' do
+get '/contacts/:id/phone_number/new' do
   @contact = Contact.find(params[:id])
   erb :phonenumber_new
 end
@@ -65,6 +65,31 @@ post '/contacts/:id' do
   erb :user_page
 end
 
+get '/contacts/:id/phone_number/:phone_number/edit' do
+  @contact = Contact.find(params[:id])
+  @phone_number = @contact.phone_numbers.find(params[:phone_number])
+  erb :edit_number
+end
+
+put '/contacts/:id/phone_number/:phone_number' do
+  @contact = Contact.find(params[:id])
+  @phone_number = @contact.phone_numbers.find(params[:phone_number])
+  @phone_number.update(number: params[:phone_number])
+  erb :user_page
+end
+
+get '/contacts/:id/phone_number/:phone_number/delete' do
+  @contact = Contact.find(params[:id])
+  @phone_number = @contact.phone_numbers.find(params[:phone_number])
+  erb :delete_number
+end
+
+delete '/contacts/:id/phone_number/:phone_number' do
+  @contact = Contact.find(params[:id])
+  @phone_number = @contact.phone_numbers.find(params[:phone_number])
+  @phone_number.destroy
+  erb :user_page
+end
 
 
 

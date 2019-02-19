@@ -1,0 +1,7 @@
+<form action="/contacts/<%= @contact.id %>/phone_number/<%= @phone_number.id %>" method="POST">
+  <input type="hidden" name="_method" value="put">
+  <label>Edit your phone number:</label>
+  <input value=<%= @phone_number.number %> type="text" name="phone_number">
+  <input type="submit" name="submit">
+
+</form>
