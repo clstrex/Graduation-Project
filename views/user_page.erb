@@ -1,13 +1,13 @@
 <h1>Hello, <%= @contact.name %>! </h1>
 
-<a href="/contacts/<%= @contact.id %>/phone_number/new"> Add a new phone number! </a>
+<a href="/contacts/<%= @contact.id %>/phone_number_id/new"> Add a new phone number! </a>
 
 <ul>
   <% @contact.phone_numbers.each do |phone_number| %>
     <li>
       <a href="/contacts/<%= @contact.id %>"> <%= phone_number.number %> </a>
-      <a href="/contacts/<%= @contact.id %>/phone_number/<%= phone_number.id %>/edit"> edit </a>
-      <a href="/contacts/<%= @contact.id %>/phone_number/<%= phone_number.id %>/delete"> delete </a>
+      <a href="/contacts/<%= @contact.id %>/phone_number_id/<%= phone_number.id %>/edit"> edit </a>
+      <a href="/contacts/<%= @contact.id %>/phone_number_id/<%= phone_number.id %>/delete"> delete </a>
     </li>
   <% end %>
 </ul>
